@@ -7,135 +7,124 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
+            background-color: #D1D1D1; /* Lighter gray */
+            color: #333; /* Darker text for contrast */
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+        }
+        .container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #9F9FA1; /* Extracted from logo */
-            flex-direction: column;
-        }
-        .card {
-            max-width: 400px;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            background: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .logo {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto 15px;
-            border-radius: 8px;
-        }
-        .card-title {
-            font-weight: 500;
-            color: #ffffff; /* White to match logo text */
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-        .card-text {
-            color: #E0E0E0; /* Lighter gray for subtle contrast */
-            font-size: 1em;
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
             margin-bottom: 20px;
         }
-        .btn-secondary {
-            width: 100%;
-            padding: 10px;
-            font-size: 1.2em;
-            background-color: #6C6C6E; /* Slightly darker gray */
-            border-color: #6C6C6E;
+        .title {
+            font-size: 28px;
+            font-weight: 600;
         }
-        .btn-secondary:hover {
-            background-color: #5C5C5E;
-            border-color: #5C5C5E;
+        .subtitle {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
         }
-        .btn-outline-secondary {
-            min-width: 120px;
-            border-color: #6C6C6E;
-            color: #6C6C6E;
-        }
-        .btn-outline-secondary:hover {
+        .btn-gray {
             background-color: #6C6C6E;
-            color: #ffffff;
+            border-color: #6C6C6E;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .btn-gray:hover {
+            background-color: #5C5C5E;
         }
         .contact-link {
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: #ffffff;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
         }
-        /* Modal Customization */
-        .modal-content {
-            border-radius: 10px;
+        .contact-link:hover {
+            color: #555;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <!-- Square Centered Logo -->
-        <img src="logo.png" alt="Logo" class="logo">
+<div class="container">
+    <img src="logo.png" alt="Ashley Forrest Logo" class="logo">
+    <h1 class="title">Ashley Forrest</h1>
+    <p class="subtitle">Welcome to my personal space.</p>
+    <a href="login.html" class="btn btn-gray">Login</a>
+    <br>
+    <a href="#" class="contact-link" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
+</div>
 
-        <h1 class="card-title">Ashley Forrest</h1>
-        <p class="card-text">A simple, minimalist space for my links.</p>
-
-        <div class="mb-3">
-            <a href="#" class="btn btn-outline-secondary me-2">Link 1</a>
-            <a href="#" class="btn btn-outline-secondary">Link 2</a>
-        </div>
-
-        <button class="btn btn-secondary" onclick="window.location.href='https://your-login-url.com'">Login</button>
-    </div>
-
-    <!-- Contact Link -->
-    <a href="#" class="contact-link text-muted" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
-
-    <!-- Contact Modal -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contact Me</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="contactForm">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                    </form>
-                </div>
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Contact Me</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gray">Send</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let message = document.getElementById("message").value;
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-            // Open mail client with pre-filled email
-            window.location.href = `mailto:your@email.com?subject=Contact from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
-        });
-    </script>
+<!-- Contact Form Script -->
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
+
+    fetch("send_email.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        document.getElementById("contactForm").reset();
+    })
+    .catch(error => alert("Error sending message."));
+});
+</script>
 
 </body>
 </html>
