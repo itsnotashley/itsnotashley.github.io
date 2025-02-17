@@ -19,26 +19,40 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        .logo {
+            width: 100px; /* Adjust logo size */
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
         .card-title {
             font-weight: 600;
             color: #212529;
         }
-        .btn-primary {
+        .btn-secondary {
             width: 100%;
             padding: 10px;
             font-size: 1.2em;
+        }
+        .btn-outline-secondary {
+            min-width: 120px;
         }
     </style>
 </head>
 <body>
     <div class="card text-center bg-white">
+        <!-- Logo Placeholder -->
+        <img src="logo.png" alt="Logo" class="logo rounded-circle">
+
         <h1 class="card-title">Ashley Forrest</h1>
         <p class="text-muted">Welcome to my minimalist landing page.</p>
+
         <div class="mb-3">
-            <a href="#" class="btn btn-outline-primary me-2">Link 1</a>
-            <a href="#" class="btn btn-outline-primary">Link 2</a>
+            <a href="#" class="btn btn-outline-secondary me-2">Link 1</a>
+            <a href="#" class="btn btn-outline-secondary">Link 2</a>
         </div>
-        <button class="btn btn-primary" onclick="window.location.href='https://your-login-url.com'">Login</button>
+
+        <button class="btn btn-secondary" onclick="window.location.href='https://your-login-url.com'">Login</button>
     </div>
 </body>
 </html>
