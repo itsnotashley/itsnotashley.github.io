@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use of Force Statement Generator</title>
+    
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 800px; margin-top: 30px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        h2 { color: #343a40; text-align: center; }
+        .form-check { margin-bottom: 8px; }
+        .btn-primary { width: 100%; }
+        #output { background: #e9ecef; padding: 15px; border-radius: 5px; margin-top: 20px; white-space: pre-wrap; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Use of Force Statement Generator</h2>
+        
+        <form id="forceForm">
+            <div class="mb-3">
+                <label class="form-label">Officer Name:</label>
+                <input type="text" class="form-control" id="officer_name" value="Ashley Forrest" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Prison Name:</label>
+                <input type="text" class="form-control" id="prison_name" value="HMP Preston" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Prisoner Name:</label>
+                <input type="text" class="form-control" id="prisoner_name">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Prisoner Number:</label>
+                <input type="text" class="form-control" id="prisoner_number">
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Date of Incident:</label>
+                    <input type="date" class="form-control" id="date_of_incident">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Time of Incident:</label>
+                    <input type="time" class="form-control" id="time_of_incident">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Incident Location:</label>
+                <input type="text" class="form-control" id="location">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">BWVC Number (if applicable):</label>
+                <input type="text" class="form-control" id="bwvc">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Incident Description:</label>
+                <textarea class="form-control" id="incident_description" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Use of Force Applied:</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="force1" value="Verbal Warnings">
+                    <label class="form-check-label" for="force1">Verbal Warnings</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="force2" value="Guiding Holds">
+                    <label class="form-check-label" for="force2">Guiding Holds</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="force3" value="Control and Restraint">
+                    <label class="form-check-label" for="force3">Control and Restraint</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="force4" value="Handcuffing">
+                    <label class="form-check-label" for="force4">Handcuffing</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="force5" value="PAVA Spray Deployment">
+                    <label class="form-check-label" for="force5">PAVA Spray Deployment</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="force6" value="Pain Compliance Techniques">
+                    <label class="form-check-label" for="force6">Pain Compliance Techniques</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="force7" value="Ground Restraint">
+                    <label class="form-check-label" for="force7">Ground Restraint</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="force8" value="Other" onclick="toggleOtherForce()">
+                    <label class="form-check-label" for="force8">Other (please specify below)</label>
+                </div>
+                <input type="text" class="form-control mt-2" id="other_force" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Injury Assessment:</label>
+                <select class="form-select" id="injury_assessment">
+                    <option>Neither the prisoner nor staff sustained injuries during the incident.</option>
+                    <option>The prisoner sustained injuries but staff did not.</option>
+                    <option>Staff sustained injuries but the prisoner did not.</option>
+                    <option>Both the prisoner and staff sustained injuries during the incident.</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Debriefing Notes:</label>
+                <textarea class="form-control" id="debriefing" rows="3"></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="generateStatement()">Generate Statement</button>
+        </form>
+
+        <h2>Generated Statement:</h2>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function toggleOtherForce() {
+            const otherForceInput = document.getElementById("other_force");
+            otherForceInput.disabled = !document.getElementById("force8").checked;
+            if (!document.getElementById("force8").checked) {
+                otherForceInput.value = "";
+            }
+        }
+
+        function generateStatement() {
+            const selectedForces = [];
+            document.querySelectorAll(".form-check-input:checked").forEach(checkbox => {
+                selectedForces.push(checkbox.value);
+            });
+
+            const otherForceInput = document.getElementById("other_force").value;
+            if (document.getElementById("force8").checked && otherForceInput.trim()) {
+                selectedForces.push(otherForceInput.trim());
+            }
+
+            document.getElementById("output").innerText = `Use of Force Applied:\n- ${selectedForces.join("\n- ")}`;
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
