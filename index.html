@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashley Forrest</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f8f9fa; /* Light gray background */
-            flex-direction: column;
+            background-color: #f8f9fa;
         }
         .card {
             max-width: 400px;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
             background: #ffffff;
+            color: #212529;
+            margin: 1rem;
         }
         .logo {
             width: 120px;
@@ -30,15 +28,24 @@
             display: block;
             margin: 0 auto 15px;
             border-radius: 8px;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: logoFadeIn 1s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+        @keyframes logoFadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
         .card-title {
-            font-weight: 500;
-            color: #343a40; /* Darker gray */
+            font-weight: 600;
             font-size: 1.8em;
             margin-bottom: 10px;
         }
         .card-text {
-            color: #6c757d; /* Bootstrap muted text */
+            color: #6c757d;
             font-size: 1em;
             margin-bottom: 20px;
         }
@@ -46,6 +53,10 @@
             width: 100%;
             padding: 10px;
             font-size: 1.2em;
+            transition: transform 0.2s ease-in-out;
+        }
+        .btn-secondary:hover {
+            transform: scale(1.03);
         }
         .btn-icon {
             min-width: 50px;
@@ -58,22 +69,18 @@
         }
     </style>
 </head>
-<body>
+<body class="d-flex justify-content-center align-items-center flex-column vh-100">
 
     <div class="card">
-        <!-- Square Centered Logo -->
-        <img src="logo.png" alt="Logo" class="logo">
-
+        <img src="logo.png" loading="lazy" alt="Ashley Forrest Logo" class="logo">
         <h1 class="card-title">Ashley Forrest</h1>
         <p class="card-text">CompSci Student, Procrastinator, Tinkerer.</p>
 
         <div class="mb-3">
-            <!-- GitHub Icon Button -->
-            <a href="https://github.com/itsnotashley" class="btn btn-outline-secondary btn-icon me-2">
+            <a href="https://github.com/itsnotashley" class="btn btn-outline-secondary btn-icon me-2" aria-label="GitHub">
                 <i class="bi bi-github"></i>
             </a>
-            <!-- LinkedIn Icon Button -->
-            <a href="https://linkedin.com/in/ashhforrest" class="btn btn-outline-secondary btn-icon">
+            <a href="https://linkedin.com/in/ashhforrest" class="btn btn-outline-secondary btn-icon" aria-label="LinkedIn">
                 <i class="bi bi-linkedin"></i>
             </a>
         </div>
@@ -81,11 +88,9 @@
         <button class="btn btn-secondary" onclick="window.location.href='https://auth.ashleyforrest.com'">Login</button>
     </div>
 
-    <!-- Contact Link -->
     <a href="mailto:webform@ashleyforrest.com" class="contact-link text-muted">Contact</a>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
