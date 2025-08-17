@@ -135,6 +135,25 @@ header {
     justify-self: center
 }
 
+.logo-wrapper {
+    background: rgba(255,255,255,0.15);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.75rem;
+    backdrop-filter: blur(6px);
+    display: inline-block;
+    margin: 3rem 0 6rem;   /* <— move the margin here */
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+}
+
+.logo-wrapper img {
+    display: block;
+}
+
+
+
 #topActions {
     flex-direction: row-reverse;
     justify-content: space-between;
